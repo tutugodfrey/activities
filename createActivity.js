@@ -12,6 +12,7 @@ function init() {
 
   createActivity.onclick = function() {  
     let data = {
+      id: Math.floor(Math.random() * 100),
       title: titleTextField.value
     }
     data = JSON.stringify(data);
@@ -25,7 +26,7 @@ function init() {
     fetch(request)
       .then(res => res.json())
       .then(function(res) {
-        console.log(res.Title);
+        console.log(res);
         const tableRow = createNode('tr');
         const title = createNode('td');
         title.append(res.Title);
@@ -33,12 +34,14 @@ function init() {
   
         const update = createNode('td');
         update.append('update');
+        update.classList.add('update');
         update.setAttribute('id', res.ID);
         update.innerHtml = 'update';
         tableRow.appendChild(update);
   
         const deleteActivity = createNode('td');
         deleteActivity.append('delete');
+        deleteActivity.classList.add('delete');
         deleteActivity.setAttribute('id', res.ID);
         deleteActivity.innerHtml = 'delete';
         tableRow.appendChild(deleteActivity);
@@ -46,8 +49,6 @@ function init() {
         table.appendChild(tableRow);
       });
   }
-
-
 }
 
 
