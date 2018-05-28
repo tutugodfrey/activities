@@ -12,15 +12,14 @@ const listenForDelete = function(callback) {
 }
 
 const deleteActivities = function(eleId) {
-	console.log(`I want to delete activity ${eleId}`);
+	const headers = new Headers()
+	header.append('Content-Type', 'application/json')
 	fetch(`https://fakerestapi.azurewebsites.net/api/Activities/${eleId}`, {
 		method: 'DELETE',
-		headers: {
-      'content-type': 'application/json'
-    },
+		headers,
 	}).then(response => {
 		const data = response.json();
-		console.log(data)
+		console.log('the activity has been deleted')
 	});
 }
 
